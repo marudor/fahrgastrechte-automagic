@@ -59,3 +59,10 @@ typings/
 
 # next.js build output
 .next
+
+lib/
+.vscode/
+output/
+node_modules/
+signature.png
+defaults.json

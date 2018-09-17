@@ -1,0 +1,38 @@
+{
+  "name": "fahrgastrechte-automagic",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --out-dir lib --copy-files",
+    "dev:start": "nodemon --watch lib --exec 'node lib/index.js'",
+    "dev": "npm run watch & npm run dev:start",
+    "lint": "eslint src",
+    "start": "node lib/index.js",
+    "watch": "babel src --out-dir lib --watch --copy-files"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.54",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/preset-flow": "^7.0.0-beta.54",
+    "@babel/preset-stage-0": "^7.0.0-beta.54",
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.2.0",
+    "eslint-config-joblift": "^2.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.3.0",
+    "flow-bin": "^0.77.0",
+    "nodemon": "^1.17.5",
+    "prettier": "^1.13.4"
+  },
+  "dependencies": {
+    "fill-pdf": "^1.1.0",
+    "font-manager": "^0.3.0",
+    "hummus": "^1.0.87",
+    "iconv": "^2.3.0",
+    "luxon": "^1.2.1",
+    "prompt": "^1.0.0"
+  }
+}
