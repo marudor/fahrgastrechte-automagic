@@ -12,7 +12,7 @@ module.exports = {
       },
     ],
     '@babel/preset-flow',
-    ['@babel/preset-stage-0', { decoratorsLegacy: true }],
+    'babel-preset-joblift',
   ],
   plugins: [],
 };
