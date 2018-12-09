@@ -148,7 +148,7 @@ prompt.get(
         required: true,
       },
       trainType: {
-        pattern: /(ICE|IC|TGV|EC)/,
+        pattern: /(ICE|IC|TGV|EC|RE|IRE|RB|RJ|NJ)/,
         description: 'Zugtyp',
         required: true,
       },
