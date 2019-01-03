@@ -1,10 +1,10 @@
 module.exports = {
-  extends: 'joblift/2space',
+  extends: ['joblift/base', 'joblift/flowtype'],
   env: {
     node: true,
     es6: true,
   },
-  rules: {
-    'max-lines': 0,
-  }
+  settings: {
+    'import/resolver': 'webpack',
+  },
 };

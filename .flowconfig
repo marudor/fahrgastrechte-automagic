@@ -6,7 +6,6 @@ src/
 [libs]
 
 [lints]
-all=warn
 
 [options]
 module.system=haste

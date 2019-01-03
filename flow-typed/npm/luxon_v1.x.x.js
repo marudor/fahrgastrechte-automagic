@@ -1,5 +1,5 @@
-// flow-typed signature: c31f0b8cea231ba77e2e7bcfd734e95d
-// flow-typed version: 658820bfe5/luxon_v1.x.x/flow_>=v0.32.0
+// flow-typed signature: 98aac267a1c929bb396ab26f7f42130d
+// flow-typed version: d4fed0d928/luxon_v1.x.x/flow_>=v0.32.0
 
 // @flow
 
@@ -288,7 +288,8 @@ declare module "luxon" {
   |};
 
   declare type SetZoneOptions = {|
-    keepCalendarTime?: ?boolean
+    keepCalendarTime?: ?boolean, // Support deprecated name for keepLocalTime
+    keepLocalTime?: ?boolean,
   |};
 
   declare type DateTimeFieldsOptions = {|
@@ -417,6 +418,10 @@ declare module "luxon" {
     static fromJSDate(date: Date, options?: DateTimeFromOptions): DateTime;
     static fromMillis(
       millseconds: number,
+      options?: DateTimeFromOptions
+    ): DateTime;
+    static fromSeconds(
+      seconds: number,
       options?: DateTimeFromOptions
     ): DateTime;
     static fromRFC2822(text: string, options?: DateTimeFromOptions): DateTime;

@@ -1,9 +1,9 @@
 // @flow
 import { DateTime } from 'luxon';
+import { promises as fs } from 'fs';
 import { generatePdf } from './fillPdf';
 import defaultData from './default';
 // $FlowFixMe ???
-import { promises as fs } from 'fs';
 import fontManager from 'font-manager';
 import hummus from 'hummus';
 import mapping from './mapping';
