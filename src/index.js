@@ -197,8 +197,14 @@ prompt.get(
         // eslint-disable-next-line no-console
         console.error(err2);
       } else {
+        try {
+          await fs.stat(path.resolve(__dirname, '../output'));
+        } catch (e) {
+          // Propably missing folder
+          await fs.mkdir(path.resolve(__dirname, '../output'));
+        }
         const date = DateTime.fromFormat(inputData.date, 'dd.MM.yy');
-        const resultPath = path.resolve(__dirname, `../output/Fahrgastrechte-${date.toFormat('MM-dd-yy')}.pdf`);
+        const resultPath = path.resolve(__dirname, `../output/Fahrgastrechte-${date.toFormat('yy-MM-dd')}.pdf`);
 
         await fs.writeFile(resultPath, output);
         await addDateAndSignature(resultPath);

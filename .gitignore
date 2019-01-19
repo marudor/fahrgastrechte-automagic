@@ -66,3 +66,4 @@ output/
 node_modules/
 signature.png
 defaults.json
+archive/
