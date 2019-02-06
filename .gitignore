@@ -67,3 +67,4 @@ node_modules/
 signature.png
 defaults.json
 archive/
+.DS_Store
