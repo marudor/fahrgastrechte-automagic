@@ -17,7 +17,7 @@ const defaults = {
   streetNumber: '',
   plz: '',
   city: '',
-  bahncard100: '',
+  bahncard100: 'BahnCard 100-Nr.',
   bahncard100Nr: '',
   birthday: '',
   mail: '',
