@@ -83,7 +83,7 @@ function constructData(fieldDatas: DataType) {
 
 async function addDateAndSignature(resultPath: string) {
   // eslint-disable-next-line no-sync
-  const font = fontManager.findFontSync({ family: 'Arial' });
+  const font = fontManager.findFontSync({ family: 'Sans Serif' });
   const writer = hummus.createWriterToModify(resultPath, {
     modifiedFilePath: resultPath,
   });
