@@ -1,18 +1,17 @@
 module.exports = {
   presets: [
+    '@babel/preset-typescript',
     [
       '@babel/preset-env',
       {
         targets: {
-          node: '10',
+          node: 'current',
         },
-        loose: true,
+        loose: false,
         useBuiltIns: 'entry',
         modules: 'commonjs',
+        corejs: 2,
       },
     ],
-    '@babel/preset-flow',
-    'babel-preset-joblift',
   ],
-  plugins: [],
 };

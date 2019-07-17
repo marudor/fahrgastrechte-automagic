@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": false,
+    "lib": ["es6", "dom", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": false,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "strict": true,
+    // "strictPropertyInitialization": false,
+    // "noImplicitAny": false,
+    "target": "esnext",
+    "emitDecoratorMetadata": false,
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "paths": {
+      "Routing/*": ["client/Routing/*"],
+      "Abfahrten/*": ["client/Abfahrten/*"],
+      "Common/*": ["client/Common/*"],
+      "testHelper": ["../test/client/testHelper"]
+    }
+  }
+}

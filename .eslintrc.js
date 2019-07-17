@@ -1,10 +1,15 @@
 module.exports = {
-  extends: ['joblift/base', 'joblift/flowtype'],
+  extends: ['marudor/noReact'],
+  parser: 'babel-eslint',
   env: {
+    browser: true,
     node: true,
     es6: true,
   },
-  settings: {
-    'import/resolver': 'webpack',
+  globals: {
+    PROD: false,
+    SERVER: false,
   },
+  rules: {},
+  settings: {},
 };

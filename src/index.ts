@@ -1,18 +1,21 @@
-// @flow
+/* eslint no-process-exit: 0 no-console: 0 */
 import { DateTime } from 'luxon';
 import { promises as fs } from 'fs';
 import { generatePdf } from './fillPdf';
+import { outputFolder, syncFile } from './paths';
 import defaultData from './default';
-// $FlowFixMe ???
+// @ts-ignore
 import fontManager from 'font-manager';
+// @ts-ignore
 import hummus from 'hummus';
 import mapping from './mapping';
 import path from 'path';
+// @ts-ignore
 import prompt from 'prompt';
 
 type ObjMapping = {
-  fields: any[],
-  regex: RegExp,
+  fields: any[];
+  regex: RegExp;
 };
 
 type DataType = { [key: string]: string };
@@ -53,7 +56,7 @@ function constructObject(obj: ObjMapping, fieldData: string) {
   }
 }
 
-function correctConstruct(fieldMapping, fieldData: any) {
+function correctConstruct(fieldMapping: any, fieldData: any) {
   if (typeof fieldMapping === 'string' || Array.isArray(fieldMapping)) {
     return constructSimple(fieldMapping, fieldData);
   }
@@ -64,7 +67,8 @@ function correctConstruct(fieldMapping, fieldData: any) {
 function constructData(fieldDatas: DataType) {
   let result = {};
 
-  Object.keys(fieldDatas).forEach(key => {
+  Object.keys(fieldDatas).forEach((key: any) => {
+    // @ts-ignore
     const fieldMapping = mapping[key];
     const fieldData = fieldDatas[key];
 
@@ -115,6 +119,23 @@ async function addDateAndSignature(resultPath: string) {
   writer.end();
 }
 
+async function checkLastSend() {
+  try {
+    const lastSend = (await fs.readFile(syncFile, 'utf8')).trim();
+    const files = await fs.readdir(outputFolder, 'utf8');
+
+    while (files[0] !== lastSend) {
+      files.shift();
+    }
+    files.shift();
+    console.log(
+      `You have ${files.length} unsent files - you may want to send them!`
+    );
+  } catch (e) {
+    // ignore
+  }
+}
+
 const yesterdayString = DateTime.local()
   .minus({ days: 1 })
   .toFormat('dd.MM.yy');
@@ -151,6 +172,7 @@ prompt.get(
         pattern: /(ICE|IC|TGV|EC|RE|IRE|RB|RJ|NJ)/,
         description: 'Zugtyp',
         required: true,
+        default: 'ICE',
       },
       trainId: {
         pattern: /\d+/,
@@ -168,7 +190,7 @@ prompt.get(
       },
     },
   },
-  (err, result) => {
+  (err: any, result: any) => {
     if (err) {
       // eslint-disable-next-line no-console
       console.error(err);
@@ -177,9 +199,10 @@ prompt.get(
     }
     const { delay, ...inputData } = result;
 
-    const arrival = DateTime.fromFormat(`${inputData.date} ${inputData.arrivalShould}`, 'dd.MM.yy HH:mm').plus(
-      Number.parseInt(delay, 10) * 1000 * 60
-    );
+    const arrival = DateTime.fromFormat(
+      `${inputData.date} ${inputData.arrivalShould}`,
+      'dd.MM.yy HH:mm'
+    ).plus(Number.parseInt(delay, 10) * 1000 * 60);
 
     data = {
       ...data,
@@ -192,25 +215,60 @@ prompt.get(
 
     // console.log(mappedData);
     //
-    generatePdf(mappedData, pdfTemplate, ['need_appearances'], async (err2, output) => {
-      if (err2) {
-        // eslint-disable-next-line no-console
-        console.error(err2);
-      } else {
-        try {
-          await fs.stat(path.resolve(__dirname, '../output'));
-        } catch (e) {
-          // Propably missing folder
-          await fs.mkdir(path.resolve(__dirname, '../output'));
-        }
-        const date = DateTime.fromFormat(inputData.date, 'dd.MM.yy');
-        const resultPath = path.resolve(__dirname, `../output/Fahrgastrechte-${date.toFormat('yy-MM-dd')}.pdf`);
+    generatePdf(
+      mappedData,
+      pdfTemplate,
+      ['need_appearances'],
+      async (err2: any, output: any) => {
+        if (err2) {
+          // eslint-disable-next-line no-console
+          console.error(err2);
+        } else {
+          try {
+            await fs.stat(outputFolder);
+          } catch (e) {
+            // Propably missing folder
+            await fs.mkdir(outputFolder);
+          }
+          const date = DateTime.fromFormat(inputData.date, 'dd.MM.yy');
+          const resultPath = path.resolve(
+            outputFolder,
+            `Fahrgastrechte-${date.toFormat('yy-MM-dd')}.pdf`
+          );
 
-        await fs.writeFile(resultPath, output);
-        await addDateAndSignature(resultPath);
-        // eslint-disable-next-line no-process-exit
-        process.exit(0);
+          if (await fs.stat(resultPath)) {
+            prompt.get(
+              {
+                properties: {
+                  overwrite: {
+                    description: `file for ${date.toFormat(
+                      'yy-MM-dd'
+                    )} already exits. Are you sure to overwrite? (y/N)`,
+                    default: 'N',
+                  },
+                },
+              },
+              async (err: any, result: any) => {
+                if (err) {
+                  console.error(err);
+                  process.exit(1);
+                }
+                console.log(result.overwrite);
+                if (result.overwrite === 'y') {
+                  await fs.writeFile(resultPath, output);
+                  await addDateAndSignature(resultPath);
+
+                  await checkLastSend();
+                  // eslint-disable-next-line no-process-exit
+                  process.exit(0);
+                } else {
+                  process.exit(1);
+                }
+              }
+            );
+          }
+        }
       }
-    });
+    );
   }
 );
