@@ -172,7 +172,6 @@ prompt.get(
         pattern: /(ICE|IC|TGV|EC|RE|IRE|RB|RJ|NJ)/,
         description: 'Zugtyp',
         required: true,
-        default: 'ICE',
       },
       trainId: {
         pattern: /\d+/,
@@ -236,37 +235,46 @@ prompt.get(
             `Fahrgastrechte-${date.toFormat('yy-MM-dd')}.pdf`
           );
 
-          if (await fs.stat(resultPath)) {
-            prompt.get(
-              {
-                properties: {
-                  overwrite: {
-                    description: `file for ${date.toFormat(
-                      'yy-MM-dd'
-                    )} already exits. Are you sure to overwrite? (y/N)`,
-                    default: 'N',
-                  },
-                },
-              },
-              async (err: any, result: any) => {
-                if (err) {
-                  console.error(err);
-                  process.exit(1);
+          try {
+            await new Promise(async resolve => {
+              try {
+                if (await fs.stat(resultPath)) {
+                  prompt.get(
+                    {
+                      properties: {
+                        overwrite: {
+                          description: `file for ${date.toFormat(
+                            'yy-MM-dd'
+                          )} already exits. Are you sure to overwrite? (y/N)`,
+                          default: 'N',
+                        },
+                      },
+                    },
+                    (err: any, result: any) => {
+                      if (err) {
+                        console.error(err);
+                        process.exit(1);
+                      }
+                      if (result.overwrite !== 'y') {
+                        console.log('Not overwriting');
+                        process.exit(1);
+                      }
+                      resolve();
+                    }
+                  );
                 }
-                console.log(result.overwrite);
-                if (result.overwrite === 'y') {
-                  await fs.writeFile(resultPath, output);
-                  await addDateAndSignature(resultPath);
-
-                  await checkLastSend();
-                  // eslint-disable-next-line no-process-exit
-                  process.exit(0);
-                } else {
-                  process.exit(1);
-                }
+              } catch (e) {
+                resolve();
               }
-            );
+            });
+          } catch (e) {
+            // ignore
           }
+
+          await fs.writeFile(resultPath, output);
+          await addDateAndSignature(resultPath);
+
+          await checkLastSend();
         }
       }
     );
