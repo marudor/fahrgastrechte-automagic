@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs';
-import { outputFolder, syncFile } from 'paths';
+import { outputFolder, syncFile } from './paths';
 
 async function setSend() {
   const files = await fs.readdir(outputFolder, 'utf8');
