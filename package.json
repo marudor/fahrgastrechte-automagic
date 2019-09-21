@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "fill-pdf": "^1.1.0",
-    "font-manager": "^0.3.0",
+    "fontmanager-redux": "^0.3.3",
     "hummus": "^1.0.105",
     "iconv": "^2.3.4",
     "luxon": "^1.17.2",

@@ -1837,12 +1837,10 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
-font-manager@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/font-manager/-/font-manager-0.3.0.tgz#9efdc13e521a3d8752e7ab56c3938818043a311f"
-  integrity sha512-6N3pzO+9kxE3yD9c4VN7reg5fqgFvjcUdxZmwauRzsExaeKRu0APfEi3DOISFakokybgKlZcLFQHawwc2TMpQQ==
-  dependencies:
-    nan ">=2.10.0"
+fontmanager-redux@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/fontmanager-redux/-/fontmanager-redux-0.3.3.tgz#39f3493332d1694ef3bd1652ee11d66ae3e4f495"
+  integrity sha512-n7bz3J+8gHn1+bEsIwdNlZ+wYsof3JPijHW/HQ+0oYA/zVTAuryXYgBrIKboNymJmYnabACoLB0p4tv/vMPGMA==
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -2625,7 +2623,7 @@ mute-stream@~0.0.4:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-nan@>=2.10.0, nan@^2.12.1, nan@^2.13.1:
+nan@^2.12.1, nan@^2.13.1:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==

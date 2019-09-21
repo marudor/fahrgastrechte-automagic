@@ -5,7 +5,7 @@ import { generatePdf } from './fillPdf';
 import { outputFolder, syncFile } from './paths';
 import defaultData from './default';
 // @ts-ignore
-import fontManager from 'font-manager';
+import fontManager from 'fontmanager-redux';
 // @ts-ignore
 import hummus from 'hummus';
 import mapping from './mapping';
