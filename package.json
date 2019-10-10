@@ -40,7 +40,7 @@
     "eslint-plugin-sort-imports-es6-autofix": "^0.5.0",
     "nodemon": "^1.19.3",
     "prettier": "^1.18.2",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.4"
   },
   "dependencies": {
     "fill-pdf": "^1.1.0",
