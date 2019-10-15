@@ -27,7 +27,7 @@
     "@types/iconv": "^2.1.16",
     "@types/luxon": "^1.15.2",
     "@types/prettier": "^1.18.2",
-    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.3.2",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.5.1",
