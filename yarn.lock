@@ -1515,10 +1515,10 @@ escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-marudor@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-marudor/-/eslint-config-marudor-7.0.0.tgz#56ec7e1547cca9b445d15f7d9e3694f3d1f2c5fd"
-  integrity sha512-aAZVwwoa/2g9hcdCQowEWZf1UNjjbA26QHQJ5ZjJOe4d4q/8o9VMdpZ1Os6HixBoO4PepKw1IZReIxMg+/4eVw==
+eslint-config-marudor@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-marudor/-/eslint-config-marudor-7.1.0.tgz#2d3bc67f3febaa1c89d8daa781fa030db8c0a816"
+  integrity sha512-c65ng/BBk3fn957I2KKyRD4udqlF1sPVOFIowSyEez8O6jwhV3EXXZYg9tFmnr+nIpOLv3fYEjIrYkK7mW6Egg==
 
 eslint-config-prettier@^6.3.0:
   version "6.3.0"
