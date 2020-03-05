@@ -6,7 +6,10 @@ export default {
   start: 'S1F4',
   departureShould: {
     regex: /(\d+):(\d+)/,
-    fields: [['S1F5', 'S1F19'], ['S1F6', 'S1F20']],
+    fields: [
+      ['S1F5', 'S1F19'],
+      ['S1F6', 'S1F20'],
+    ],
   },
   destination: 'S1F7',
   arrivalDate: {

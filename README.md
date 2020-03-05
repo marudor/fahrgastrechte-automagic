@@ -4,7 +4,7 @@ It's a pain to fill out Fahrgastrechte. I tried to make it easier.
 
 ## Requirements
 
-- node 10 (LTS) (If your OS doesn't provide this I suggest you use https://github.com/jasongin/nvs)
+- node 12 (LTS) (If your OS doesn't provide this I suggest you use https://github.com/jasongin/nvs)
 - yarn (https://yarnpkg.com)
 - pdftk
 

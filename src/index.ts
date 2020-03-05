@@ -1,4 +1,5 @@
-/* eslint no-process-exit: 0 no-console: 0 */
+/* eslint-disable no-console */
+/* eslint-disable no-process-exit */
 import { DateTime } from 'luxon';
 import { promises as fs } from 'fs';
 import { generatePdf } from './fillPdf';
@@ -13,12 +14,14 @@ import path from 'path';
 // @ts-ignore
 import prompt from 'prompt';
 
-type ObjMapping = {
+interface ObjMapping {
   fields: any[];
   regex: RegExp;
-};
+}
 
-type DataType = { [key: string]: string };
+interface DataType {
+  [key: string]: string;
+}
 
 const pdfTemplate = path.resolve(__dirname, '../template/fahrgastrechte.pdf');
 const signaturePath = path.resolve(__dirname, '../signature.png');
@@ -236,6 +239,7 @@ prompt.get(
           );
 
           try {
+            // eslint-disable-next-line no-async-promise-executor
             await new Promise(async resolve => {
               try {
                 if (await fs.stat(resultPath)) {

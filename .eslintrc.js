@@ -10,6 +10,10 @@ module.exports = {
     PROD: false,
     SERVER: false,
   },
-  rules: {},
-  settings: {},
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      extends: ['marudor/typescript'],
+    },
+  ],
 };
