@@ -8,6 +8,10 @@ It's a pain to fill out Fahrgastrechte. I tried to make it easier.
 - yarn (https://yarnpkg.com)
 - pdftk
 
+### Under linux (ubuntu)
+
+- `fontconfig.h` (Under ubuntu install `libfontconfig1-dev`)
+
 ## Defaults
 
 There is a `defaults.json.example` rename it to `defaults.json` and fill out relevant Fields.
