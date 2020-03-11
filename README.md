@@ -27,3 +27,7 @@ You may need to experiment a bit with the size - I suggest you use a transparent
 - `yarn`
 - `yarn build`
 - `yarn start`
+
+## Run in Docker
+- `docker build -t fahrgastrechte .`
+- `docker run fahrgastrechte`
